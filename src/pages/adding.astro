@@ -1,0 +1,78 @@
+---
+import Kartelayout from '../layouts/Kartelayout.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+---
+
+<Kartelayout title="Parkbank App">
+	<Header
+	title="Parkbank hinzufügen"
+	/>
+	<div class="map-container">
+		<img class="map" src="./Assets/Map.png">
+	</div>
+	<div class ="adding-picture-container">	
+		<div class="round-circle">
+			<img class ="image-plus" src="./Assets/image-plus.svg">
+		</div>
+		<div class="round-circle">
+			<img class ="image-plus" src="./Assets/image-plus.svg">
+		</div>
+	</div>
+	<div class ="bewertungs-container">
+		<h2>Parkbank bewerten</h2>
+	</div>
+	
+
+	
+	<Footer/>
+</Kartelayout>
+
+<style>
+	.map {
+	top: 77px;
+	left: 19px;
+	width: 374px;
+	height: 143px;
+	/* UI Properties */
+	border-radius: 16px;
+	opacity: 1;
+	}
+
+	.map-container {
+	display: flex;
+  	justify-content: center; 
+  	align-items: center;
+  	height: 15em; /* Beispielhöhe des Containers */
+	margin-left: 2em;
+	margin-right: 2em;
+	}
+
+	.round-circle {
+		/* Layout Properties */
+	width: 4em;
+	height: 4em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* UI Properties */
+	background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	border-radius: 1000px;
+	}
+
+	.adding-picture-container {
+		display: flex;
+		justify-content: center;
+
+	}
+
+	.bewertungs-container {
+		margin-top: 4em;
+		margin-left: 0.7em;
+	}
+	
+
+
+	
+</style>
