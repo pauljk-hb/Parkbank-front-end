@@ -1,13 +1,12 @@
 :root {
 
     /*COLOR*/
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(45deg,
-            rgb(var(--accent)),
-            rgb(var(--accent-light)) 30%,
-            white 60%);
+    --accent: #BE491E;
+    --accent-light: #D4DD9A;
+    --white: #FFFFFF;
+    --gray-light: #F1F1F1;
+    --gray-dark: #292929;
+    --black: #000000;
 
     /*FONT STYLE*/
     --fontBig: 0.8rem
@@ -15,20 +14,8 @@
 
 html {
     font-family: "articulat-cf", sans-serif;
-    background: #2a5b90;
+    background: var(--gray-light);
     background-size: 224px;
-}
-
-code {
-    font-family:
-        Menlo,
-        Monaco,
-        Lucida Console,
-        Liberation Mono,
-        DejaVu Sans Mono,
-        Bitstream Vera Sans Mono,
-        Courier New,
-        monospace;
 }
 
 footer {
@@ -36,8 +23,8 @@ footer {
     justify-content: center;
     align-items: center;
     height: 5em;
-    background-color: white;
-    color: black;
+    background-color: var(--white);
+    color: var(--black);
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -48,7 +35,7 @@ footer {
 header {
     display: flex;
     justify-content: start;
-    background-color: white;
+    background-color: var(--white);
     padding: 2%;
     font-size: var(--fontBig);
 }
