@@ -2,6 +2,8 @@
 import Kartelayout from '../layouts/Kartelayout.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import StarRating from '../components/StarRating.jsx';
+import DiscoverKachel from '../components/DiscoverKachel.jsx';
 ---
 
 <Kartelayout title="Parkbank App">
@@ -21,6 +23,7 @@ import Header from '../components/Header.astro';
 	</div>
 	<div class ="bewertungs-container">
 		<h2>Parkbank bewerten</h2>
+		<StarRating client:load/> 
 		
 	</div>
 	
@@ -65,6 +68,7 @@ import Header from '../components/Header.astro';
 	.adding-picture-container {
 		display: flex;
 		justify-content: center;
+		gap: 1em;
 
 	}
 
