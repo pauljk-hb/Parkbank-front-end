@@ -20,10 +20,10 @@ const db = getFirestore(app);
 
 export async function getBenchData() {
     const querySnapshot = await getDocs(collection(db, "benches"));
+    const userData = [];
     querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
+        userData.push({ id: doc.id, ...doc.data() });
         console.log(doc.id, " => ", doc.data());
     });
+    return userData;
 }
-
-//getBenchData();
