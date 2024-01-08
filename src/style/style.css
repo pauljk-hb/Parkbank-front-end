@@ -12,6 +12,23 @@
     --fontBig: 0.8rem
 }
 
+*, *::before, *::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+img,
+picture,
+svg {
+    max-width: 100%;
+    display: block;
+}
+
 html {
     font-family: "articulat-cf", sans-serif;
     background: var(--gray-light);
@@ -38,9 +55,4 @@ header {
     background-color: var(--white);
     padding: 2%;
     font-size: var(--fontBig);
-}
-
-body {
-    margin: 0;
-    padding: 0;
 }
