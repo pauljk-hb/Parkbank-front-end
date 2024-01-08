@@ -1,0 +1,28 @@
+
+  <!-- src/components/StarRating.astro -->
+<script type="module">
+    export let rating = 0;
+  
+    function handleClick(index) {
+      export rating = index + 1;
+      // This is just for logging purposes, you can replace it with your desired functionality
+      console.log("Selected rating:", rating);
+    }
+  </script>
+  
+  <div class="star-rating">
+    ${Array(5)
+      .fill()
+      .map((_, index) => {
+        return `
+          <span
+            class="${index < rating ? 'filled' : ''}"
+            onclick="handleClick(${index})"
+          >
+            ★
+          </span>
+        `;
+      })
+      .join('')}
+  </div>
+  

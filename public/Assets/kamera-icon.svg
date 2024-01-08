@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="26" height="23.65" viewBox="0 0 26 23.65">
+  <g id="Gruppe_32" data-name="Gruppe 32" transform="translate(-163.5 -261.675)">
+    <g id="Gruppe_31" data-name="Gruppe 31">
+      <path id="Pfad_5" data-name="Pfad 5" d="M16.05,13H9" transform="translate(163.975 261.675)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="2.5"/>
+      <path id="Pfad_6" data-name="Pfad 6" d="M12,10v7.05" transform="translate(164.5 261.15)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="2.5"/>
+      <path id="Pfad_7" data-name="Pfad 7" d="M11.139,24.15h5.222c3.667,0,5.5,0,6.818-.864a5.179,5.179,0,0,0,1.441-1.415c.88-1.293.88-3.094.88-6.694s0-5.4-.88-6.694a5.178,5.178,0,0,0-1.441-1.415,6.757,6.757,0,0,0-3.528-.825,1.652,1.652,0,0,1-1.592-1.321A2.426,2.426,0,0,0,15.67,3H11.83A2.425,2.425,0,0,0,9.442,4.923,1.652,1.652,0,0,1,7.849,6.244a6.757,6.757,0,0,0-3.528.825A5.176,5.176,0,0,0,2.88,8.483C2,9.776,2,11.577,2,15.177s0,5.4.88,6.694a5.177,5.177,0,0,0,1.441,1.415C5.638,24.15,7.472,24.15,11.139,24.15Z" transform="translate(162.75 259.925)" fill="none" stroke="#000" stroke-width="2.5"/>
+    </g>
+  </g>
+</svg>
