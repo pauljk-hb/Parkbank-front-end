@@ -1,0 +1,14 @@
+---
+import Kartelayout from '../layouts/Kartelayout.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import DiscoverKachel from '../components/DiscoverKachel.jsx';
+---
+
+
+<Kartelayout title="Parkbank App">
+	<Header title="Gespeicherte Bänke"/>
+    <DiscoverKachel client:only/>
+	<Footer/>
+</Kartelayout>
+

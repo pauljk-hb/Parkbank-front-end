@@ -1,11 +1,20 @@
-
-
 <footer>
   <div class="footerIcon">
-    <img src="./Assets/Map.svg" alt="Bild">
-    <img src="./Assets/explore.svg" alt="Bild">
-    <img src="./Assets/category.svg" alt="Bild">
-    <img src="./Assets/save.svg" alt="Bild">
+    <button id="mapButton">
+      <img src="./Assets/Map.svg" alt="Bild">
+    </button>
+    <button id="exploreButton">
+      <img src="./Assets/explore.svg" alt="Bild">
+    </button>
+    
+    <button id="addBench">
+      <img src="./Assets/category.svg" alt="Bild">
+    </button>
+    
+    <button id="favouritesButton">
+      <img src="./Assets/save.svg" alt="Bild">
+    </button>
+    
 
   </div>
 </footer>
@@ -15,5 +24,30 @@
   .footerIcon {
     display: flex;
     gap: 5em;
+    outline: 2px solid transparent;
   }
+
+  img{
+    filter: brightness(0)
+  }
+
 </style>
+
+<script>
+  document.getElementById('mapButton').onclick = function() {
+  window.location.href = 'http://localhost:4321';
+};
+
+document.getElementById('exploreButton').onclick = function() {
+  window.location.href = 'http://localhost:4321/explore';
+};
+
+document.getElementById('addBench').onclick = function() {
+  window.location.href = 'http://localhost:4321/adding';
+};
+
+document.getElementById('favouritesButton').onclick = function() {
+  window.location.href = 'http://localhost:4321/favourites';
+};
+
+</script>
