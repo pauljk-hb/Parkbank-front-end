@@ -45,8 +45,7 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    border-top-left-radius: 10%;
-    border-top-right-radius: 10%;
+    border-radius: 29px 29px 0px 0px;
 }
 
 header {
@@ -57,3 +56,48 @@ header {
     font-size: var(--fontBig);
 }
 
+.discover-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: .7em;
+}
+
+.data-container{
+    width: 90%;
+    background-color: var(--white);
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    padding: .7em;
+    position: relative;
+
+    .icon-holder{
+        display: flex;
+        gap: 1em;
+        position: absolute;
+        bottom: .6em;
+        right: 1em;
+    }
+
+    .rating-icons{
+        display: flex;
+        gap: .1em;
+        margin-bottom: .6em;
+    }
+
+    .gab-big{
+        gap: .7em
+    }
+
+    .discover-img-container{
+        height: 8rem;
+        overflow: hidden;
+        border-radius: 10px 10px 0px 0px;
+        margin-bottom: 1em;
+    }
+
+    .discover-img{
+        object-fit: cover;
+        width: 100%;
+    }
+}
