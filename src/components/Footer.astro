@@ -1,19 +1,19 @@
 <footer>
   <div class="footerIcon">
-    <button id="mapButton">
+    <a href="/">
       <img src="./Assets/Map.svg" alt="Bild">
-    </button>
-    <button id="exploreButton">
+    </a>
+    <a href="/explore">
       <img src="./Assets/explore.svg" alt="Bild">
-    </button>
+    </a>
     
-    <button id="addBench">
+    <a href="/adding">
       <img src="./Assets/category.svg" alt="Bild">
-    </button>
+    </a>
     
-    <button id="favouritesButton">
+    <a href="/favourites">
       <img src="./Assets/save.svg" alt="Bild">
-    </button>
+    </a>
     
 
   </div>
@@ -33,21 +33,3 @@
 
 </style>
 
-<script>
-  document.getElementById('mapButton').onclick = function() {
-  window.location.href = 'http://localhost:4321';
-};
-
-document.getElementById('exploreButton').onclick = function() {
-  window.location.href = 'http://localhost:4321/explore';
-};
-
-document.getElementById('addBench').onclick = function() {
-  window.location.href = 'http://localhost:4321/adding';
-};
-
-document.getElementById('favouritesButton').onclick = function() {
-  window.location.href = 'http://localhost:4321/favourites';
-};
-
-</script>
