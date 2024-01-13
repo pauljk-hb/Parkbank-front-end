@@ -1,5 +1,6 @@
 import { initializeApp  } from "firebase/app";
 import { getFirestore, getDocs, collection } from "firebase/firestore";
+import { dummyData } from "./dummyData";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Firebase configuration
@@ -19,11 +20,11 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export async function getBenchData() {
-    const querySnapshot = await getDocs(collection(db, "benches"));
-    const userData = [];
-    querySnapshot.forEach((doc) => {
-        userData.push({ id: doc.id, ...doc.data() });
-        console.log(doc.id, " => ", doc.data());
-    });
-    return userData;
+    // const querySnapshot = await getDocs(collection(db, "benches"));
+    // const userData = [];
+    // querySnapshot.forEach((doc) => {
+    //     userData.push({ id: doc.id, ...doc.data() });
+    //     console.log(doc.id, " => ", doc.data());
+    // });
+    return dummyData;
 }
