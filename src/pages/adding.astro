@@ -29,7 +29,6 @@ import DiscoverKachel from "../components/DiscoverKachel.jsx";
     <h2>Parkbank bewerten</h2>
     <StarRating client:load />
   </div>
-
   <Footer />
 </Kartelayout>
 
@@ -46,12 +45,7 @@ document.addEventListener('astro:page-load', () =>{
 	function doSomethingWithFiles(fileList) {
 	let file = null;
 
-	for (let i = 0; i < fileList.length; i++) {
-		if (fileList[i].type.match(/^image\//)) {
-		file = fileList[i];
-		break;
-		}
-	}
+	file = fileList[0];
 
 	if (file !== null) {
 		output.src = URL.createObjectURL(file);
@@ -110,12 +104,6 @@ document.addEventListener('astro:page-load', () =>{
 	width: 1.5em;
 	height: 1.5em;
   }
-
-  .bewertungs-container {
-	margin-top: 4em;
-	margin-left: 0.7em;
-	margin-bottom: 5em;
-  }
 }
   
 
@@ -128,5 +116,6 @@ document.addEventListener('astro:page-load', () =>{
   .bewertungs-container {
     margin-top: 4em;
     margin-left: 0.7em;
+	margin-bottom: 5em;
   }
 </style>
