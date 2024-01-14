@@ -1,83 +1,132 @@
 ---
-import Kartelayout from '../layouts/Kartelayout.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import StarRating from '../components/StarRating.jsx';
-import DiscoverKachel from '../components/DiscoverKachel.jsx';
+import Kartelayout from "../layouts/Kartelayout.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import StarRating from "../components/StarRating.jsx";
+import DiscoverKachel from "../components/DiscoverKachel.jsx";
 ---
 
 <Kartelayout title="Parkbank App">
-	<Header
-	title="Parkbank hinzufügen"
-	/>
-	<div class="map-container">
-		<img class="map" src="./Assets/Map.png">
-	</div>
-	<div class ="adding-picture-container">	
-		<div class="round-circle">
-			<img class ="image-plus" src="./Assets/image-plus.svg">
-		</div>
-		<div class="round-circle">
-			<img class ="kamera-icon" src="./Assets/kamera-icon.svg">
-		</div>
-	</div>
-	<div class ="bewertungs-container">
-		<h2>Parkbank bewerten</h2>
-		<StarRating client:load/> 
-		
-	</div>
-	
+  <Header title="Parkbank hinzufügen" />
+  <div class="map-container">
+    <img class="map" src="./Assets/Map.png" />
+  </div>
 
-	
-	<Footer/>
+  <img id="output" />
+
+  <div class="adding-picture-container">
+    <div class="round-circle">
+      <img class="image-plus" src="./Assets/image-plus.svg" />
+      <input type="file" id="file-input-gallery" accept="image/*" />
+    </div>
+    <div class="round-circle">
+      <img class="kamera-icon" src="./Assets/kamera-icon.svg" />
+      <input type="file" id="file-input-camera" accept="image/*" capture="environment" />
+    </div>
+  </div>
+
+  <div class="bewertungs-container">
+    <h2>Parkbank bewerten</h2>
+    <StarRating client:load />
+  </div>
+
+  <Footer />
 </Kartelayout>
 
+<script>
+
+document.addEventListener('astro:page-load', () =>{
+	const output = document.getElementById('output');
+	const fileInputCamera = document.getElementById('file-input-camera');
+	const fileInputGallery = document.getElementById('file-input-gallery');
+
+	fileInputCamera.addEventListener('change', (e) => doSomethingWithFiles(e.target.files),);
+	fileInputGallery.addEventListener('change', (e) => doSomethingWithFiles(e.target.files),);
+
+	function doSomethingWithFiles(fileList) {
+	let file = null;
+
+	for (let i = 0; i < fileList.length; i++) {
+		if (fileList[i].type.match(/^image\//)) {
+		file = fileList[i];
+		break;
+		}
+	}
+
+	if (file !== null) {
+		output.src = URL.createObjectURL(file);
+	}
+	}
+});
+</script>
+
 <style>
-	.map {
-	top: 77px;
-	left: 19px;
-	width: 374px;
-	height: 143px;
-	/* UI Properties */
+  .map {
+    object-fit: cover;
+  }
+
+  .map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	/* Beispielhöhe des Containers */
+	margin: 1em 2em 2em 2em;
+	width: 80vw;
+	height: 10em;
 	border-radius: 16px;
-	opacity: 1;
+	overflow: hidden;
+  }
+
+  .round-circle {
+    /* Layout Properties */
+    width: 4em;
+    height: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	position: relative;
+    /* UI Properties */
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border-radius: 1000px;
+
+	input{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		cursor: pointer;
 	}
+  
 
-	.map-container {
-	display: flex;
-  	justify-content: center; 
-  	align-items: center;
-  	height: 15em; /* Beispielhöhe des Containers */
-	margin-left: 2em;
-	margin-right: 2em;
-	}
+  .image-plus {
+	width: 1.5em;
+	height: 1.5em;
+  }
 
-	.round-circle {
-		/* Layout Properties */
-	width: 4em;
-	height: 4em;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	/* UI Properties */
-	background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-	background: #FFFFFF 0% 0% no-repeat padding-box;
-	border-radius: 1000px;
-	}
+  .kamera-icon {
+	width: 1.5em;
+	height: 1.5em;
+  }
 
-	.adding-picture-container {
-		display: flex;
-		justify-content: center;
-		gap: 1em;
+  .bewertungs-container {
+	margin-top: 4em;
+	margin-left: 0.7em;
+	margin-bottom: 5em;
+  }
+}
+  
 
-	}
+  .adding-picture-container {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+  }
 
-	.bewertungs-container {
-		margin-top: 4em;
-		margin-left: 0.7em;
-	}
-	
-
-
-	
+  .bewertungs-container {
+    margin-top: 4em;
+    margin-left: 0.7em;
+  }
 </style>
