@@ -1,18 +1,44 @@
 <footer>
   <div class="footerIcon">
     <a href="/">
-      <img src="./Assets/Map.svg" alt="Bild">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28.929" height="26.756" viewBox="0 0 28.929 26.756" class="in-active">
+        <path id="map-svgrepo-com" d="M11.876,27.67,3,23.232V4l8.876,4.438m0,19.232,8.876-4.438M11.876,27.67V8.438m8.876,14.794,8.876,4.438V8.438L20.752,4m0,19.232V4M11.876,8.438,20.752,4" transform="translate(-1.85 -2.457)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3"/>
+      </svg>
     </a>
     <a href="/explore">
-      <img src="./Assets/explore.svg" alt="Bild">
+      <svg xmlns="http://www.w3.org/2000/svg" width="27.13" height="27.13" viewBox="0 0 27.13 27.13" class="in-active">
+        <g id="explore-svgrepo-com" transform="translate(-1.85 -1.85)">
+          <path id="Pfad_9" data-name="Pfad 9" d="M10.18,10.18l6.862-1.715-1.715,6.862L8.464,17.041Z" transform="translate(2.662 2.662)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3"/>
+          <path id="Pfad_10" data-name="Pfad 10" d="M15.415,27.83A12.415,12.415,0,1,0,3,15.415,12.415,12.415,0,0,0,15.415,27.83Z" transform="translate(0 0)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3"/>
+        </g>
+      </svg>
     </a>
     
     <a href="/adding">
-      <img src="./Assets/category.svg" alt="Bild">
+      <svg xmlns="http://www.w3.org/2000/svg" width="23.25" height="23.25" class="in-active" viewBox="0 0 23.25 23.25">
+        <g id="Gruppe_34" data-name="Gruppe 34" transform="translate(-201 -317)">
+          <g id="Rechteck_24" data-name="Rechteck 24" transform="translate(201 317)" fill="none" stroke-linejoin="round" stroke-width="2.3">
+            <rect x="1.15" y="1.15" width="8.3" height="8.3" fill="none"/>
+          </g>
+          <g id="Rechteck_25" data-name="Rechteck 25" transform="translate(213.65 317)" fill="none" stroke-linejoin="round" stroke-width="2.3">
+            <rect x="1.15" y="1.15" width="8.3" height="8.3" fill="none"/>
+          </g>
+          <g id="Rechteck_26" data-name="Rechteck 26" transform="translate(201 329.65)" fill="none" stroke-linejoin="round" stroke-width="2.3">
+            <rect x="1.15" y="1.15" width="8.3" height="8.3" fill="none"/>
+          </g>
+          <line id="Linie_1" data-name="Linie 1" y2="10.6" transform="translate(218.95 329.65)" fill="none" stroke-width="2.3"/>
+          <line id="Linie_2" data-name="Linie 2" y2="10.6" transform="translate(224.25 334.95) rotate(90)" fill="none" stroke-width="2.3"/>
+        </g>
+      </svg>
+      
     </a>
     
     <a href="/favourites">
-      <img src="./Assets/save.svg" alt="Bild">
+      <svg xmlns="http://www.w3.org/2000/svg" width="19.346" height="25.157" viewBox="0 0 19.346 25.157" class="in-active">
+        <g id="save-remove-svgrepo-com" transform="translate(-0.85 -4.73)">
+          <path id="Pfad_8" data-name="Pfad 8" d="M19.046,10.284V26.373c0,2.054-1.266,2.917-2.813,1.926l-4.785-3.1a1.875,1.875,0,0,0-1.851,0L4.813,28.3C3.266,29.29,2,28.426,2,26.373V10.284c0-2.422,1.7-4.4,3.787-4.4H15.26C17.342,5.88,19.046,7.863,19.046,10.284Z" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3"/>
+        </g>
+      </svg>
     </a>
     
 
@@ -25,6 +51,29 @@
     display: flex;
     gap: 3em;
     outline: 2px solid transparent;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .active {
+    stroke: #be491e !important;
+  }
+
+  .in-active {
+    stroke: #000;
   }
 </style>
+
+<!--Set active class on nav when the page is active -->
+<script>
+  document.addEventListener('astro:page-load', () =>{
+    const nav = document.querySelector(".footerIcon");
+    const navLinks = nav.querySelectorAll("a");
+    const currentURL = window.location.href;
+    navLinks.forEach((link) => {
+      if (link.href === currentURL) {
+        link.children[0].classList.add("active");
+      }
+    });
+  });
+</script>
 

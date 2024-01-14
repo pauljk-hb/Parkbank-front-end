@@ -13,25 +13,55 @@
   import L from "leaflet";
   import { getBenchData } from "../js/main";
 
-  var map = L.map("map", {
-    center: [53.07991965970221, 8.80701130380905],
-    zoom: 19,
-    zoomControl: false,
-  });
+  document.addEventListener("astro:page-load", async () => {
+    var map = L.map("map", {
+      zoom: 19,
+      zoomControl: false,
+    });
 
-  L.tileLayer("https://api.mapbox.com/styles/v1/pauljk/ckubokgaz2lkw17t6e339dyte/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoicGF1bGprIiwiYSI6ImNrdWJvaTFtNjBzaTEybm1vNnJ1Z20wNWQifQ.rJtQ57RHiAFxjZLQ6fwGfw", {
-    maxZoom: 19,
-    attribution:
-      '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  }).addTo(map);
+    L.tileLayer(
+      "https://api.mapbox.com/styles/v1/pauljk/ckubokgaz2lkw17t6e339dyte/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoicGF1bGprIiwiYSI6ImNrdWJvaTFtNjBzaTEybm1vNnJ1Z20wNWQifQ.rJtQ57RHiAFxjZLQ6fwGfw",
+      {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }
+    ).addTo(map);
 
     const benchData = await getBenchData();
-    benchData.forEach(item => {
-        var myIcon = L.icon({
-        iconUrl: '/Assets/Bank-Icon.png',
+    benchData.forEach((item) => {
+      var myIcon = L.icon({
+        iconUrl: "/Assets/Bank-Icon.png",
         iconSize: [37, 44],
         iconAnchor: [18.5, 44],
-  });
-        L.marker([item.pos._lat, item.pos._long], {icon: myIcon}).addTo(map);
+      });
+      L.marker([item.pos._lat, item.pos._long], { icon: myIcon }).addTo(map);
     });
+
+    if (!navigator.geolocation) {
+      console.log("Geolocation is not supported by your browser");
+    } else {
+      console.log("Locating…");
+      navigator.geolocation.getCurrentPosition(
+        setUserPosition,
+        errUserPosition
+      );
+    }
+
+    function setUserPosition(pos) {
+      const userPos = [pos.coords.latitude, pos.coords.longitude];
+      map.setView(userPos, 19);
+      var myIcon = L.icon({
+        iconUrl: "/Assets/User-Icon.svg",
+        iconSize: [37, 44],
+        iconAnchor: [18.5, 44],
+      });
+      L.marker(userPos, { icon: myIcon }).addTo(map);
+    }
+
+    function errUserPosition(err) {
+      const userPos = [53.066454217670845, 8.832499876338382];
+      map.setView(userPos, 19);
+    }
+  });
 </script>
