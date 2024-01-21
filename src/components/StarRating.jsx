@@ -1,6 +1,8 @@
 // src/StarRating.js
 import React, { useState } from 'react';
 import '../style/StarRating.css';
+import star from "./icons/star.svg"
+import { star } from 'astro:icons';
 
 const StarRating = () => {
   const [rating, setRating] = useState(0);
@@ -16,13 +18,13 @@ const StarRating = () => {
       {Array(5)
         .fill()
         .map((_, index) => (
-          <span
+          <div
             key={index}
-            className={index < rating ? 'filled' : ''}
+            className={`star-container ${index < rating ? 'filled' : ''}`}
             onClick={() => handleClick(index)}
           >
-            ★
-          </span>
+            <Icon name="star" />
+          </div>
         ))}
     </div>
   );
