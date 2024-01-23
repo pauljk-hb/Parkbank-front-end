@@ -1,4 +1,5 @@
 <div id="map"></div>
+<button id="btn">Route</button>
 
 <style>
   #map {
@@ -6,12 +7,21 @@
     width: 100%;
     z-index: 1;
   }
+  #btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+  }
 </style>
 
 <script>
   import "leaflet/dist/leaflet.css";
   import L from "leaflet";
+  import 'leaflet-routing-machine';
   import { getBenchData } from "../js/main";
+
+  let userPos;
 
   document.addEventListener("astro:page-load", async () => {
     var map = L.map("map", {
@@ -43,7 +53,7 @@
     } else {
       console.log("Locating…");
       navigator.geolocation.getCurrentPosition(
-        setUserPosition,
+        getUserPosition,
         errUserPosition
       );
     }
@@ -59,9 +69,35 @@
       L.marker(userPos, { icon: myIcon }).addTo(map);
     }
 
+    function getUserPosition(pos) {
+      setUserPosition(pos);
+      console.log(pos);
+      userPos = [pos.coords.latitude, pos.coords.longitude];
+      return pos;
+    }
+
     function errUserPosition(err) {
       const userPos = [53.066454217670845, 8.832499876338382];
       map.setView(userPos, 19);
     }
+
+    console.log(userPos);
+
+
+    document.getElementById('btn').addEventListener('click', () => {
+      console.log(userPos);
+      L.Routing.control({
+        waypoints: [
+            L.latLng(userPos[0], userPos[1]),
+            L.latLng(53.06686955494183, 8.837867944851569),
+            // Add more waypoints as needed
+        ],
+        routeWhileDragging: true,
+        show: false, // Hide the route UI
+        createMarker: function() {}, // Disable markers
+        lineOptions: {styles: [{color: '#BE491E', weight: 4}]},
+        instructions: '' // Hide instructions
+    }).addTo(map);
+    })
   });
 </script>
