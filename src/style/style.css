@@ -98,6 +98,7 @@ header {
         overflow: hidden;
         border-radius: 10px 10px 0px 0px;
         margin-bottom: 1em;
+        display: flex;
     }
 
     .discover-img{
@@ -116,6 +117,7 @@ header {
     bottom: 5em;
     left: 50%;
     transform: translate(-50%, 0%);
+    padding-top: 2em;
 }
 
 .d-flex{
