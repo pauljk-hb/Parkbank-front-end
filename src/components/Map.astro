@@ -2,6 +2,9 @@
 
 <tamplate map-data-card-template>
   <div class="data-container">
+    <div>
+      <span class="close-icon">x</span>
+    </div>
     <div class="discover-img-container">
       <img src="Assets/Map.png" alt="Beschnittenes Bild" class="discover-img" />
     </div>
@@ -247,19 +250,13 @@
     width: 100%;
     z-index: 1;
   }
-  #btn {
+
+  .close-icon{
+    font-size: 18pt;
+    font-weight: bold;
     position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 2;
-  }
-
-  .filled {
-    fill: black;
-  }
-
-  .stroke-black {
-    stroke: black;
+    top: .2em;
+    right:.6em;
   }
 </style>
 
@@ -316,28 +313,34 @@
       processRating(stars, markerData.evaluation.full, 'fill');
       processRating(view, markerData.evaluation.view, 'stroke');
       processRating(clean, markerData.evaluation.clean, 'fill');
+
+      template.querySelector('.icon-holder').children[0].addEventListener('click', () => addRoute(markerData.pos._lat, markerData.pos._long));
       
       return markerData;
     }
 
     function processRating(rating, value, className) {
-      console.log(value);
 
-      for (let i = 0; i < value; i++) {
-        if(className === 'fill'){
-          rating[i].children[0].style.fill = 'black';
+      for (let i = 0; i < rating.length; i++) {
+        if(i < value){
+          if(className === 'fill'){
+            rating[i].children[0].style.fill = 'black';
+          }else{
+            rating[i].children[0].style.stroke = 'black';
+          }
         }else{
-          rating[i].children[0].style.stroke = 'black';
+          if(className === 'fill'){
+            rating[i].children[0].style.fill = 'none';
+          }else{
+            rating[i].children[0].style.stroke = '#B1B1B1';
+          }
         }
       }
     }
-    /*
-    document.querySelector('#map').addEventListener('click', () => {
-      if(document.querySelector('.data-container').classList.contains('data-card-map')){
-        let template = document.querySelector('[map-data-card-template]');
-        template.querySelector('.data-container').classList.remove('data-card-map');
-      }
-    });*/
+
+    document.querySelector('.close-icon').addEventListener('click', () => {
+      document.querySelector('[map-data-card-template]').querySelector('.data-container').classList.remove('data-card-map');
+    })
 
     if (!navigator.geolocation) {
       console.log("Geolocation is not supported by your browser");
@@ -373,21 +376,20 @@
     }
 
 
-
-    // document.getElementById("btn").addEventListener("click", () => {
-    //   console.log(userPos);
-    //   L.Routing.control({
-    //     waypoints: [
-    //       L.latLng(userPos[0], userPos[1]),
-    //       L.latLng(53.06686955494183, 8.837867944851569),
-    //       // Add more waypoints as needed
-    //     ],
-    //     routeWhileDragging: true,
-    //     show: false, // Hide the route UI
-    //     createMarker: function () {}, // Disable markers
-    //     lineOptions: { styles: [{ color: "#BE491E", weight: 4 }] },
-    //     instructions: "", // Hide instructions
-    //   }).addTo(map);
-    // });
+    function addRoute(_lat, _long){
+      L.Routing.control({
+        waypoints: [
+          L.latLng(userPos[0], userPos[1]),
+          L.latLng(_lat, _long),
+          // Add more waypoints as needed
+        ],
+        routeWhileDragging: true,
+        show: false, // Hide the route UI
+        createMarker: function () {}, // Disable markers
+        lineOptions: { styles: [{ color: "#BE491E", weight: 4 }] },
+        instructions: "", // Hide instructions
+        profile: 'foot'
+      }).addTo(map);
+    }
   });
 </script>
