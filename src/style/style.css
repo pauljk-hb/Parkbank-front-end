@@ -109,3 +109,11 @@ header {
 .leaflet-routing-alt  {
     display: none !important;
   }
+
+.data-card-map{
+    position: absolute;
+    z-index: 2;
+    bottom: 5em;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
