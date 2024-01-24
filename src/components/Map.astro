@@ -257,6 +257,10 @@
   .filled {
     fill: black;
   }
+
+  .stroke-black {
+    stroke: black;
+  }
 </style>
 
 <script>
@@ -264,6 +268,7 @@
   import L from "leaflet";
   import "leaflet-routing-machine";
   import { getBenchData } from "../js/main";
+  import { doc } from "firebase/firestore";
 
   let userPos;
 
@@ -302,12 +307,37 @@
       console.log("Marker clicked:", markerData);
 
       let template = document.querySelector('[map-data-card-template]');
-      console.log(template);
-      let clone = (template as HTMLTemplateElement).content.cloneNode(true);
-      console.log(clone);
+      template.querySelector('.data-container').classList.add('data-card-map');
 
+      let stars = template.querySelectorAll('.rating-icons')[0].children;
+      let view = template.querySelectorAll('.rating-icons')[1].children;
+      let clean = template.querySelectorAll('.rating-icons')[2].children;
+      
+      processRating(stars, markerData.evaluation.full, 'fill');
+      processRating(view, markerData.evaluation.view, 'stroke');
+      processRating(clean, markerData.evaluation.clean, 'fill');
+      
       return markerData;
     }
+
+    function processRating(rating, value, className) {
+      console.log(value);
+
+      for (let i = 0; i < value; i++) {
+        if(className === 'fill'){
+          rating[i].children[0].style.fill = 'black';
+        }else{
+          rating[i].children[0].style.stroke = 'black';
+        }
+      }
+    }
+    /*
+    document.querySelector('#map').addEventListener('click', () => {
+      if(document.querySelector('.data-container').classList.contains('data-card-map')){
+        let template = document.querySelector('[map-data-card-template]');
+        template.querySelector('.data-container').classList.remove('data-card-map');
+      }
+    });*/
 
     if (!navigator.geolocation) {
       console.log("Geolocation is not supported by your browser");
