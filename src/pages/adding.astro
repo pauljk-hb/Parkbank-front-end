@@ -26,7 +26,7 @@ import DiscoverKachel from "../components/DiscoverKachel.jsx";
   </div>
 
   <div class="bewertungs-container">
-    <h2>Parkbank bewerten</h2>
+    <h2 class ="bewerten">Parkbank bewerten</h2>
     <div class="d-flex">
       <h3 class="sauberkeit">Sauberkeit</h3>
       <StarRating client:load />
@@ -37,13 +37,16 @@ import DiscoverKachel from "../components/DiscoverKachel.jsx";
     </div>
     <div class="d-flex">
       <h3 class="zustand">Zustand</h3>
-      <StarRating client:load />
+      <StarRating client:load class="star-rating" />
     </div>
   </div>
+  <div class ="d-flex">
+    <div class="btn-primary">Hinzufügen</div>
   <Footer />
 </Kartelayout>
 
 <script>
+  
 
 document.addEventListener('astro:page-load', () =>{
 	const output = document.getElementById('output');
@@ -125,7 +128,7 @@ document.addEventListener('astro:page-load', () =>{
   }
 
   .bewertungs-container {
-    margin-top: 4em;
+    margin-top: 3em;
     margin-left: 1.1em;
 	margin-bottom: 5em;
   }
@@ -133,18 +136,42 @@ document.addEventListener('astro:page-load', () =>{
 
   .sauberkeit {
     margin-right: 1em;
+    margin-top: -0.22em;
   }
 
 
   .aussicht {
     margin-right: 2em;
+    margin-top: -0.22em;
+  
   }
 
   .zustand {
     margin-right: 2.2em;
+    margin-top: -0.22em;
+    font-weight: 1em;
   }
 
+  .bewerten {
+    margin-bottom: 0.7em
+  }
 
+.btn-primary {
+    top: 639px;
+    left: 123px;
+    width: 166px;
+    height: 38px;
+    margin-left: 7.6em;
+    margin-top: -1em;
+    background: var(--unnamed-color-000000) 0% 0% no-repeat padding-box;
+    background: #000000 0% 0% no-repeat padding-box;
+    color: white;
+    border-radius: 13px;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   
 </style>
