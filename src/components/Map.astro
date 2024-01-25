@@ -310,16 +310,16 @@
       let view = template.querySelectorAll('.rating-icons')[1].children;
       let clean = template.querySelectorAll('.rating-icons')[2].children;
       
-      processRating(stars, markerData.evaluation.full, 'fill');
-      processRating(view, markerData.evaluation.view, 'stroke');
-      processRating(clean, markerData.evaluation.clean, 'fill');
+      processRating(stars, markerData.evaluation.full, 'fill', 'none');
+      processRating(view, markerData.evaluation.view, 'stroke', '#B1B1B1');
+      processRating(clean, markerData.evaluation.clean, 'fill', '#B1B1B1');
 
       template.querySelector('.icon-holder').children[0].addEventListener('click', () => addRoute(markerData.pos._lat, markerData.pos._long));
       
       return markerData;
     }
 
-    function processRating(rating, value, className) {
+    function processRating(rating, value, className, color) {
 
       for (let i = 0; i < rating.length; i++) {
         if(i < value){
@@ -330,9 +330,9 @@
           }
         }else{
           if(className === 'fill'){
-            rating[i].children[0].style.fill = 'none';
+            rating[i].children[0].style.fill = color;
           }else{
-            rating[i].children[0].style.stroke = '#B1B1B1';
+            rating[i].children[0].style.stroke = color;
           }
         }
       }

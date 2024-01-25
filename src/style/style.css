@@ -58,6 +58,7 @@ header {
     font-size: var(--fontBig);
     position: sticky;
     top: 0;
+    z-index: 2;
 }
 
 .discover-container{
@@ -122,6 +123,6 @@ header {
 
 .d-flex{
     display: flex;
-    gap: .1em;
+    gap: .4em;
     margin-bottom: .6em;
 }
