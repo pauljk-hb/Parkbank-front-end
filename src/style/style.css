@@ -123,6 +123,6 @@ header {
 
 .d-flex{
     display: flex;
-    gap: .4em;
+    gap: 1em;
     margin-bottom: .6em;
 }
