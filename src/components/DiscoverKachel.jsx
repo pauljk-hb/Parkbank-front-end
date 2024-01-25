@@ -41,7 +41,7 @@ function DiscoverKachel() {
                 <div key={item.id} className="data-container">
                     <div>
                         <div className="discover-img-container">
-                            <img src="Assets/missing-image.jpeg" alt="Beschnittenes Bild" className="discover-img"/>
+                            <img src="./Assets/missing-image.jpeg" alt="Beschnittenes Bild" className="discover-img"/>
                         </div>
                         
                         <FixedStarRating  fillNumber={ item.evaluation.full }/>
